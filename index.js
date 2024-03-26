@@ -35,3 +35,9 @@ cloudinaryConnect();
 app.listen(PORT, ()=>{
     console.log(`I am listening at port ${PORT}`);
 })
+
+app.get('/', function(req, res) {
+    var ipAddress = req.headers['x-forwarded-for'];
+    console.log("Visitor's IP address: " + ipAddress);
+    res.send("Your IP address: " + req.headers.host);
+});
